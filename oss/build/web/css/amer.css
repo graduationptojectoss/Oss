@@ -5,3 +5,10 @@
 #addDepartment a{
     float: left;
 }
+
+.redcolor {
+    color: #ff2e2b;
+}
+.warcolor:hover{
+    color: wheat;
+}

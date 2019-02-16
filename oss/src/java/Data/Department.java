@@ -22,6 +22,7 @@ public class Department implements Serializable {
     String image;
 
     public Department() {
+        image = GetFromDB.getImageDepartment().get((int)(Math.random() * 10));
     }
 
     public int getId() {
@@ -72,10 +73,11 @@ public class Department implements Serializable {
     public boolean addToDataBase() {
         System.out.println(nameA);
         DB db;
+        
         try {
             db = new DB();
             //db.write(q);
-            String q = "INSERT INTO department(id,name_arabic)VALUES(null,'" + nameA +"');";
+            String q = "INSERT INTO department(Dep_ID,Dep_Name,image)VALUES(null,'" + nameA +"','"+image+"');";
             System.out.println(q);
             try {
                 db.write(q);

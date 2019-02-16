@@ -35,4 +35,21 @@ public class GetFromDB {
         return departments;
     }
 
+    public static List<String> getImageDepartment() {
+        List<String> image = new ArrayList<String>();
+        try {
+            DB db = new DB();
+            String sql = "SELECT * FROM imagedepartment ;";
+            
+            ResultSet r = db.read(sql);
+            while (r.next()) {
+                String ss = r.getString(1);
+                image.add(ss);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return image;
+    }
+
 }

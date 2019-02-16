@@ -6,7 +6,9 @@
 package Beans;
 
 import Data.Department;
+import Data.GetFromDB;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
@@ -20,7 +22,11 @@ public class DepartmentsManage implements Serializable{
     Department department;
     @ManagedProperty(value = "#{sessionLists}")
     SessionLists sessionLists;
-
+    
+    
+    
+    String imageD;
+    
     public DepartmentsManage() {
         department = new Department();
     }
@@ -50,6 +56,19 @@ public class DepartmentsManage implements Serializable{
     public void setDepartment(Department department) {
         this.department = department;
     }
+    
+    public List<String> getImageDepartment(){
+        return GetFromDB.getImageDepartment();
+    }
+
+    public String getImageD() {
+        return imageD;
+    }
+
+    public void setImageD(String imageD) {
+        this.imageD = imageD;
+    }
+    
     
     
     
