@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" class="rest">
+    <h:head>
+        <title>Facelet Title</title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
+
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+        <!-- Custom styles for this template-->
+        <link href="css/sb-admin-2.min.css" rel="stylesheet"/>
+        <link href="css/amer.css" rel="stylesheet"/>
+
+    </h:head>
+    <h:body id="page-top">
+
+
+
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+و بد
+            <!-- Sidebar -->
+            <ui:include src="pages/sidebar.xhtml"/>
+
+
+
+
+
+
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <ui:include src="pages/heder.xhtml"/>
+                    <!-- End of Topbar -->
+
+
+                    <!-- Begin Page Content -->
+                    <h:form>
+                    <p:column id="contentPage">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+
+                                    <h2 class="section-heading text-uppercase">دوائر البلدية</h2>
+                                    <br/><br/><br/>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <ui:repeat value="#{sessionLists.departments}" var="department" id="fadeEffectImages">
+
+                                   
+
+                                    <div class="col-md-4">
+                                        <span class="fa-stack fa-4x">
+                                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                            <i class="fas #{department.image} fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                         <h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="">
+                                        <h4 class="service-heading">#{department.nameA}</h4> 
+                                         </h:outputLink>
+                                    </div>
+                                   
+                                </ui:repeat>
+
+                                <div class="col-md-4">
+
+                                    <h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="PF('dlg').show();">
+
+
+                                        <span class="fa-stack fa-4x">
+                                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                            <i class="fas fa-plus fa-stack-1x fa-inverse  "></i> 
+                                        </span>
+
+                                        <h4 class="service-heading " style="margin-top: 10px">اضافة دائرة</h4>
+                                    </h:outputLink>
+                                    
+                                    <p:dialog id="addDepartment"  widgetVar="dlg" header="اضافة دائرة جديدة"  resizable="false" showEffect="clip" hideEffect="clip">
+                                        
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <h:panelGrid columns="1" cellpadding="0">
+                                                    <p:inputText id="nameA" value="#{departmentsManage.department.nameA}" label="name" required="true"/>
+                                                    <p:message for="nameA" />
+                                                </h:panelGrid>
+                                                <h:outputLabel for="nameA" value=":اسم الدائرة بالعربية" />
+                                                
+                                                <p:commandButton  actionListener="#{departmentsManage.addDepartment()}"  value="اضافة" update="@form"/>
+
+                                            </h:panelGrid>
+
+
+                                        
+                                    </p:dialog>   
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                        <!-- /.container-fluid -->
+                    </p:column>
+                        </h:form>
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright © Your Website 2019</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- Bootstrap core JavaScript-->
+
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="vendor/chart.js/Chart.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-pie-demo.js"></script>
+
+
+
+
+
+    </h:body>
+</html>
+
