@@ -7,6 +7,8 @@ package Beans;
 
 import Data.Department;
 import Data.GetFromDB;
+import Data.Section;
+import Data.Service;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -20,9 +22,12 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class SessionLists implements Serializable{
     List<Department> departments;
+    List<Section> sections;
+    List<Service> services;
 
     public SessionLists() {
         this.departments = GetFromDB.getDepartments();
+        this.services = GetFromDB.getServices();
     }
 
     public List<Department> getDepartments() {
@@ -33,7 +38,20 @@ public class SessionLists implements Serializable{
         this.departments = departments;
     }
 
-    
-    
-    
+    public List<Service> getServices() {
+        return services;
+    }
+
+    public void setServices(List<Service> services) {
+        this.services = services;
+    }
+
+    public List<Section> getSections() {
+        return sections;
+    }
+
+    public void setSections(List<Section> sections) {
+        this.sections = sections;
+    }
+ 
 }

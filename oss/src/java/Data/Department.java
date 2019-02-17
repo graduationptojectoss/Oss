@@ -8,6 +8,7 @@ package Data;
 import DB.DB;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,8 +21,10 @@ public class Department implements Serializable {
     int id;
     String nameA;
     String image;
+    List<Section> sections;
 
     public Department() {
+        image = GetFromDB.getImageDepartment().get((int)(Math.random() * 10));
     }
 
     public int getId() {
@@ -72,10 +75,11 @@ public class Department implements Serializable {
     public boolean addToDataBase() {
         System.out.println(nameA);
         DB db;
+        
         try {
             db = new DB();
             //db.write(q);
-            String q = "INSERT INTO department(id,name_arabic)VALUES(null,'" + nameA +"');";
+            String q = "INSERT INTO department(Dep_ID,Dep_Name,image)VALUES(null,'" + nameA +"','"+image+"');";
             System.out.println(q);
             try {
                 db.write(q);
@@ -90,6 +94,20 @@ public class Department implements Serializable {
         }
         return false;
     }
+
+    public List<Section> getSections() {
+        return sections;
+    }
+
+    public void setSections(List<Section> sections) {
+        this.sections = sections;
+    }
     
 
+     public Department(int id, String nameA, List<Section> sections) {
+        this.id = id;
+        this.nameA = nameA;
+        this.sections = sections;
+    }
+    
 }
